@@ -45,11 +45,13 @@ function Generate() {
       const {id, meta, output} = result
       if(output){
         setGeneratedImage({id, meta, output})
-      }else{
+      }else if(result.status=="nocredit"){
         toast(result.message);
         setTimeout(()=>{
           window.location.href="/billing"
         },2000)
+      }else{
+        toast('Something wrong! Try again.')
       }
       setInprogress(false)
     })
