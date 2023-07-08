@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const user = await UserModel.findOne({ email });
     const sample = meta.n_samples || 1;
     if (user.credit < sample) {
-      return res.send({ status: "wrong", message: "Not  enough credit" });
+      return res.send({ status: "nocredit", message: "Not  enough credit" });
     }
     generate({ image, meta })
       .then((result) => {

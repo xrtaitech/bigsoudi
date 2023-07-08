@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     await dbConnect();
     const user = await UserModel.findOne({ email });
     if(user.credit < sample){
-      return res.send({status:'wrong', message: 'Not  enough credit'})
+      return res.send({status:'nocredit', message: 'Not  enough credit'})
     }
     
     generate({ sample, dimension, prompt, negativePrompt })
