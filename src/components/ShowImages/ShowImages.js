@@ -29,8 +29,10 @@ function ShowImages() {
         const { id, meta, output } = result;
         if(output){
           setGeneratedImage({...generatedImage, output: [...generatedImage.output, ...output]});
-        }else{
+        }else if(result.status=="nocredit"){
           toast(result.message)
+        }else{
+          toast('Something wrong!  Try again..')
         }
         setInprogress(false);
       })
